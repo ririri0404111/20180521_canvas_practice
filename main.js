@@ -9,22 +9,31 @@ window.onload = function(){
   ctx.canvas.height = wd_height;
 
 
-s = star(50,100);
 
-function star(x,y){
-    ctx.fillStyle = '#f0e68c';
-    ctx.strokeStyle = '#f0e68c';
+     function star(x,y){
+        ctx.fillStyle = '#f0e68c';
+        ctx.strokeStyle = '#f0e68c';
 
-    ctx.beginPath();
-    ctx.moveTo(50+x,100+y);
-    ctx.lineTo(250+x, 100+y);
-    ctx.lineTo(85+x, 210+y);
-    ctx.lineTo(150+x,30+y);
-    ctx.lineTo(215+x, 210+y);
-    ctx.lineTo(50+x,100+y);
-    ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(50+x,100+y);
+        ctx.lineTo(250+x, 100+y);
+        ctx.lineTo(85+x, 210+y);
+        ctx.lineTo(150+x,30+y);
+        ctx.lineTo(215+x, 210+y);
+        ctx.lineTo(50+x,100+y);
+        ctx.fill();
+    }
 
+  function onClick(e) {
+    console.log("click");
+    var x = e.clientX - cv.offsetLeft;
+    var y = e.clientY - cv.offsetTop;
+    console.log("x:", x, "y:", y);
+    star(x,y);
 }
+cv.addEventListener('click', onClick, false);
+
+
 
 /*ctx.fillStyle = '#f0e68c';
 ctx.strokeStyle = '#f0e68c';
@@ -50,5 +59,4 @@ ctx.fill();*/
       x=0,y=0;
     }
   },10);*/
-
 }
