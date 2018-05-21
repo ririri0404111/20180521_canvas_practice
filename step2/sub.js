@@ -1,5 +1,5 @@
 window.onload = function(){
-  var x = 10, y = 10;
+  var x=10, y = 10;
   var cv = document.getElementById('cv');
   var ctx = cv.getContext('2d');
 
@@ -23,18 +23,48 @@ window.onload = function(){
         ctx.fill();
     }
 
-  function onClick(e) {
-    console.log("click");
-    var x = e.clientX - cv.offsetLeft;
-    var y = e.clientY - cv.offsetTop;
-    console.log("x:", x, "y:", y);
-    star(x,y);
-}
-cv.addEventListener('click', onClick, false);
+    var flag = false;
+    var yoko;
+    var tate;
+    function onClick(e) {
+
+      console.log("click");
+      var x = e.clientX - cv.offsetLeft;
+      var y = e.clientY - cv.offsetTop;
+      console.log("x:", x, "y:", y);
+      flag = true;
+      yoko = x;
+      tate = y;
+  }
+  
+  cv.addEventListener('click', onClick, false);
+
+setInterval(function(){
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  star(x,y);
+  ctx.fillStyle="#4682b4";
+  x++; y++;
+  //console.log(x,y);
+  if (flag==true){
+    star(yoko,tate);
+  }
+
+  if (y>600){
+    x=0,y=0;
+  }
+},100);
+
+
+
+
+
+
+
+
 
 
 };
-step();
+
 
 
 
@@ -64,4 +94,4 @@ ctx.fill();*/
       x=0,y=0;
     }
   },10);*/
-}
+//}
