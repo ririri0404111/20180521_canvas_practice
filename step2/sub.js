@@ -11,8 +11,11 @@ window.onload = function(){ //全部読み込んでから実行する
   if(ctx.canvas == cv){
     console.log('同じ');
   }
+  function clearCanvas(){
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  }
 
-  function star(xCoor,yCoor){　//☆の造形まとめた関数
+  function drawStar(xCoor,yCoor){　//☆の造形まとめた関数
     ctx.fillStyle = '#f0e68c';　//☆の色
     ctx.strokeStyle = '#f0e68c';　//☆の線の色
 
@@ -45,13 +48,38 @@ window.onload = function(){ //全部読み込んでから実行する
   cv.addEventListener('click', onClick, false);　//クリックイベントを用意
 
   setInterval(function(){　//一定時間ごとに実行する　ループ　関数
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);//描画をクリアにする
-    star(xCoor,yCoor);　//☆の座標をセットして関数実行すr
-    xCoor++; yCoor++;　//座標を1ずつ足して右下へ動かしてく
+    clearCanvas();//canvasをクリアにする
+    var kaisuu = 0;
+/*    for(var i = 0; i<9; i++){
+      xCoor = kaisuu;
+      drawStar(xCoor,yCoor);　//☆の座標をセットして関数実行すr
+      kaisuu = kaisuu+50;
+    }*/
+
+
+for(i=0; i<10; i++){
+  drawStar(kaisuu,yCoor);　//☆の座標をセットして関数実行すr
+  kaisuu += 50;
+}
+
+/*
+    drawStar(xCoor,yCoor);
+    drawStar(xCoor+50,yCoor);
+    drawStar(xCoor+100,yCoor);
+    drawStar(xCoor+150,yCoor);
+    drawStar(xCoor+200,yCoor);
+    drawStar(xCoor+250,yCoor);
+    drawStar(xCoor+300,yCoor);
+    drawStar(xCoor+350,yCoor);
+    drawStar(xCoor+400,yCoor);
+    drawStar(xCoor+450,yCoor);
+    drawStar(xCoor+500,yCoor);
+    drawStar(xCoor+,yCoor);*/
+     yCoor++;　//消して描いて新しく描く位置の座標を書いてくりかえし
     //console.log(x,y);
-      if (flag==true){　//もしフラグがtrueなら
-        star(sideX,lengthY);　//クリックしたときstar関数を実行
-      }
+      /*if (flag==true){　//もしフラグがtrueなら
+        drawStar(sideX,lengthY);　//クリックしたときstar関数を実行
+      }*/
 
       if (yCoor>600){　//
         xCoor=0,yCoor=0;
